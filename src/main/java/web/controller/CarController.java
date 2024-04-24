@@ -20,7 +20,7 @@ public class CarController {
 
     @GetMapping()
     public String showAll(@RequestParam(value = "count", required = false, defaultValue = "5") int count, Model model) {
-        System.out.println(carService.showByParameter(count));
+        count = Math.min(count, 5);
         model.addAttribute("cars", carService.showByParameter(count));
         return "cars";
     }
